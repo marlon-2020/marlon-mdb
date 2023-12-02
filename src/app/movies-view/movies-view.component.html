@@ -1,0 +1,24 @@
+<app-header></app-header>
+<main>
+    <section class="welcome-text">
+        <h1>welcome to Marlon-MDB</h1>
+    </section>
+    <section class="carousel">
+        <div class="carousel-container" >
+            <img src="./assets/images/welcome.jfif" alt="" class="item">
+            <img src="./assets/images/welcome.jfif" alt="" class="item">
+            <img src="./assets/images/welcome.jfif" alt="" class="item">
+        </div>
+    </section>
+    <section class="movies">
+        <div class="card-container">
+            <div class="card"  *ngFor="let movie of moviesList">
+                <img src="{{ 'https://image.tmdb.org/t/p/original' + movie.backdrop_path }}" alt="">
+                <h1>{{ movie.original_title }}</h1>
+                <p>{{ movie.overview }}</p>
+                <p></p>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
