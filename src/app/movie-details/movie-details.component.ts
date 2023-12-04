@@ -12,6 +12,7 @@ export class MovieDetailsComponent implements OnInit {
   movieId: any;
   movie: any='';
   posterUrl: string = 'https://image.tmdb.org/t/p/original'
+  trailerLink=''
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,6 +25,10 @@ export class MovieDetailsComponent implements OnInit {
     this.tmdb.getMovieById(this.movieId).subscribe((data) =>{
       this.movie = data
       console.log(this.posterUrl+this.movie.poster_path, this.movie)
+      this.tmdb.getTrailerLink(this.movie.id).subscribe((data:any)=>{
+        console.log(data.results[0])
+        this.trailerLink = 'https://www.youtube.com/watch?v='+data.results[0].key
+      })
     })
   } 
 

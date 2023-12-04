@@ -31,9 +31,14 @@
             <div class="details">
                 <h2>More</h2>
                 <p>{{ movie.tagline }}</p>
-                <a href="{{ movie.homepage }}">>>Official Site<<</a>
+                <a href="{{ movie.homepage }}">>>Official Site<<</a><br>
+                <a href="{{trailerLink}}">Trailer</a>
             </div>
         </div>
+    </div>
+    <div class="btn-container">
+        <input type="button" value="Add WatchList" id="add">
+        <input type="button" value="Remove From WatchList" id="remove"> 
     </div>
 </main>
 <app-footer></app-footer>
