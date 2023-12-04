@@ -27,5 +27,9 @@ export class HttpTmdbService {
   getMovieByTitle(value: string){
     return this.http.get(`https://api.themoviedb.org/3/search/movie?query=${value}&include_adult=false&language=en-US&page=1`, this.options)
   }
+
+  getTrailerLink(value: string){
+    return this.http.get(`https://api.themoviedb.org/3/movie/${value}/videos`, this.options)
+  }
   
 }

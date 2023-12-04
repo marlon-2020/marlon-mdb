@@ -11,11 +11,14 @@ export class SearchMoviesComponent {
 
   movie: any='';
   posterUrl: string = 'https://image.tmdb.org/t/p/original'
-
+  trailerLink: string = ''
   searchMovieByTitle(value: string){
     this.tmdb.getMovieByTitle(value).subscribe((data: any)=>{
       this.movie = data.results[0]
+      this.tmdb.getTrailerLink(this.movie.id).subscribe((data:any)=>{
+        console.log(data.results[0])
+        this.trailerLink = 'https://www.youtube.com/watch?v='+data.results[0].key
+      })
     })
   }
-
 }
