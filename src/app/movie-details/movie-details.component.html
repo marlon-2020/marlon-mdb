@@ -1,1 +1,39 @@
-<p>movie-details works!</p>
+<app-header></app-header>
+<main>
+    <div class="container">
+        <div class="card" *ngIf="movie">
+            <img src="{{ posterUrl+movie.poster_path }}" alt="">
+        </div>
+        <div class="card" *ngIf="!movie">
+            Not found movie
+        </div>
+        <div class="details-container">
+            <div class="details">
+                <h2>Title</h2>
+                <h3>{{ movie.title }}</h3>
+            </div>
+            <div class="details">
+                <h2>Synopsis</h2>
+                <p>{{ movie.overview }}</p>
+            </div>
+            <div class="details">
+                <h2>Genres</h2>
+                <p><span *ngFor="let genre of movie.genres">{{ genre.name | genreFilter }}</span></p>
+            </div>
+            <div class="details">
+                <h2>Released Date</h2>
+                <p>{{ movie.release_date | date }}</p>
+            </div>
+            <div class="details">
+                <h2>Avarage Rate</h2>
+                <p>{{ movie.vote_average }}</p>
+            </div>
+            <div class="details">
+                <h2>More</h2>
+                <p>{{ movie.tagline }}</p>
+                <a href="{{ movie.homepage }}">>>Official Site<<</a>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

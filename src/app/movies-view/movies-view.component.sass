@@ -1,24 +1,93 @@
-.carousel-container
-    position: relative
-    top: 0
-    left: 0
-    img.item
-        position: absolute
-        transition: all 1s
-        width: 350px
-.card-container
-    display: grid
-    grid-template-columns: 250px 250px 250px
-    justify-content: space-between
-    align-content: center
-    gap: 10px
-    .card
+main
+    padding: 20px
+    display: flex
+    flex-direction: column
+    gap: 20px
+    background: rgb(1, 15, 21)
+    .welcome-text
+        h1
+            text-align: center
+    .btn-container
         display: flex
-        flex-direction: column
-        align-items: center
         justify-content: center
-        img
-            width: 250px
-        h1, p
-            width: 250px
+        gap: 30px
+        input
+            width: 150px
+            height: 30px
+            border-radius: 10px
+            box-shadow: 3px 3px 10px black
+            border: 1px solid black
+            background: #eccfb1
             color: black
+            font-size: 1.3rem
+            &:hover
+                cursor: pointer
+    .carousel-container
+        margin: auto
+        width: 350px
+        display: grid
+        grid-template-columns: 350px 350px 350px
+        justify-content: center
+        overflow: hidden
+        img.item
+            position: relative
+            transition: all 1s
+            width: 350px
+            top: 0
+            left: 0
+    .card-container
+        width: 95%
+        padding: 20px 0
+        margin: auto
+        display: grid
+        grid-template-columns: 250px 250px 250px 250px
+        justify-content: center
+        align-content: center
+        gap: 20px
+        border-radius: 10px
+        .card
+            overflow: hidden
+            display: flex
+            flex-direction: column
+            gap: 5px
+            align-items: center
+            border-radius: 10px
+            background: #eccfb1
+            transition: transform 0.5s
+            img
+                width: 100%
+            h1, p
+                display: flex
+                align-items: center
+                justify-content: center
+                padding: 0 5px
+                width: 100%
+                color: black
+                height: 100px
+            h1
+                text-align: center
+            p
+                font-size: 20px
+            &:hover
+                box-shadow: 3px 3px 3px white, -3px 3px 3px white, 3px -3px 3px white, -3px -3px 3px white
+                transform: translateY(-10px)
+                cursor: pointer
+
+@media screen and (max-width: 1120px)
+    main
+        .card-container
+            grid-template-columns: 360px 360px
+            .card
+                max-width: 100%
+@media screen and (max-width: 800px)
+    main
+        .btn-container
+            flex-direction: column
+            align-items: center
+            gap: 15px
+            input
+                width: 200px
+        .card-container
+            grid-template-columns: 90%
+            .card
+                max-width: 100%

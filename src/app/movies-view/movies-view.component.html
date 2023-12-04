@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
     <section class="welcome-text">
-        <h1>welcome to Marlon-MDB</h1>
+        <h1>Welcome to Marlon-MDB</h1>
     </section>
     <section class="carousel">
         <div class="carousel-container" >
@@ -10,13 +10,17 @@
             <img src="./assets/images/welcome.jfif" alt="" class="item">
         </div>
     </section>
+    <div class="btn-container">
+        <input type="button" value="By Title" id="title" #title (click)="setSort(title.id)">
+        <input type="button" value="Default" id="default" #default (click)="setSort(default.id)">
+        <input type="button" value="By Date" id="date" #date (click)="setSort(date.id)">
+    </div>
     <section class="movies">
         <div class="card-container">
-            <div class="card"  *ngFor="let movie of moviesList">
-                <img src="{{ 'https://image.tmdb.org/t/p/original' + movie.backdrop_path }}" alt="">
-                <h1>{{ movie.original_title }}</h1>
-                <p>{{ movie.overview }}</p>
-                <p></p>
+            <div class="card"  *ngFor="let movie of moviesList" id="{{ movie.id }}" #id (click)="goToMoviesDetails(id.id)">
+                <img src="{{ 'https://image.tmdb.org/t/p/original' + movie.backdrop_path }}" alt="poster">
+                <h1>{{ movie.title }}</h1>
+                <p>{{ movie.release_date | date }}</p>
             </div>
         </div>
     </section>

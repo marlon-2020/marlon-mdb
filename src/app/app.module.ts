@@ -12,6 +12,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuSlideDirective } from './directives/open-menu-slide.directive';
 import { CloseMenuSlideDirective } from './directives/close-menu-slide.directive';
 import { CarouselDirective } from './directives/carousel.directive';
+import { GenreFilterPipe } from './pipes/genre-filter.pipe';
+import { WatchListComponent } from './watch-list/watch-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CarouselDirective } from './directives/carousel.directive';
     FooterComponent,
     MenuSlideDirective,
     CloseMenuSlideDirective,
-    CarouselDirective
+    CarouselDirective,
+    GenreFilterPipe,
+    WatchListComponent,
   ],
   imports: [
     BrowserModule,
