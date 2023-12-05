@@ -20,16 +20,49 @@ export class MovieDetailsComponent implements OnInit {
     ){}
 
   ngOnInit(){
-    console.log(this.activatedRoute.snapshot.params['id'])
+    
+    if(localStorage.getItem('wish-list')){
+      this.wishList = JSON.parse(localStorage.getItem('wish-list')!)
+      console.log(this.wishList)
+    }
+
     this.movieId = this.activatedRoute.snapshot.params['id']
     this.tmdb.getMovieById(this.movieId).subscribe((data) =>{
       this.movie = data
       console.log(this.posterUrl+this.movie.poster_path, this.movie)
       this.tmdb.getTrailerLink(this.movie.id).subscribe((data:any)=>{
-        console.log(data.results[0])
+        
         this.trailerLink = 'https://www.youtube.com/watch?v='+data.results[0].key
       })
     })
+
+
   } 
+  wishList:any[] = []
+
+  addToWishList(movieTitle: string){
+    this.tmdb.getMovieByTitle(movieTitle)
+    .subscribe((data: any)=>{
+      if(this.findMovieAdded(movieTitle) == -1){
+        this.wishList.push({
+          title: data.results[0].title,
+          url: this.posterUrl + data.results[0].poster_path,
+          date: data.results[0].release_date
+        })
+        localStorage.setItem('wish-list', JSON.stringify(
+          this.wishList
+        ))
+        alert('Added With Success!')
+      }else{
+        alert('Already Added!')
+      }
+    })
+  }
+
+  findMovieAdded(movieTitle: string){
+    return this.wishList.findIndex((element)=>{
+      return element.title === movieTitle
+    })
+  }
 
 }
