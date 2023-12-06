@@ -1,6 +1,6 @@
 import { HttpTmdbService } from './../services/http-tmdb.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -55,7 +55,7 @@ export class MovieDetailsComponent implements OnInit {
       if(this.findMovieAdded(movieTitle) == -1){
         this.wishList.push({
           title: data.results[0].title,
-          url: this.posterUrl + data.results[0].poster_path,
+          url: this.posterUrl + data.results[0].backdrop_path,
           date: data.results[0].release_date,
           id: data.results[0].id
         })

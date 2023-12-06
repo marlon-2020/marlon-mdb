@@ -42,10 +42,11 @@ export class SearchMoviesComponent implements OnInit {
   addToWishList(movieTitle: string){
     this.tmdb.getMovieByTitle(movieTitle)
     .subscribe((data: any)=>{
+      
       if(this.findMovieAdded(movieTitle) == -1){
         this.wishList.push({
           title: data.results[0].title,
-          url: this.posterUrl + data.results[0].poster_path,
+          url: this.posterUrl + data.results[0].backdrop_path,
           date: data.results[0].release_date,
           id: data.results[0].id
         })

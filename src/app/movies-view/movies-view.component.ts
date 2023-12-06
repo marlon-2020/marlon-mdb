@@ -42,7 +42,6 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
     this.tmdb.getMoviesList().subscribe(
       (data: any) => {
         this.moviesList = data.results
-        console.log(this.moviesList)
       }
     )
 

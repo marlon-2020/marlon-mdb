@@ -1,5 +1,23 @@
 <app-header></app-header>
 <main>
-    
+    <div class="btn-container">
+        <!-- <input type="button" value="By Title" id="title" #title (click)="setSort(title.id)">
+        <input type="button" value="Default" id="default" #default (click)="setSort(default.id)">
+        <input type="button" value="By Date" id="date" #date (click)="setSort(date.id)"> -->
+    </div>
+    <section class="movies">
+        <div class="card-container">
+            <div class="card" *ngFor="let movie of watchList">
+                <div class="card-movie" id="{{ movie.id }}" (click)="goToMoviesDetails(movie.id)">
+                    <img src="{{ movie.url }}" alt="">
+                    <h1>{{ movie.title }}</h1>
+                    <p>{{ movie.date }}</p>
+                </div>
+                <div class="btn-container">
+                    <input type="button" value="Remove From Watchlist" class="btn-remove">
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 <app-footer></app-footer>
