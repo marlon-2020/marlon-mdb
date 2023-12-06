@@ -37,8 +37,8 @@
         </div>
     </div>
     <div class="btn-container">
-        <input type="button" value="Add WatchList" id="add" (click)="addToWishList(title.innerHTML)">
-        <input type="button" value="Remove From WatchList" id="remove"> 
+        <input type="button" value="Add WatchList" id="add" (click)="addToWishList(title.innerHTML)" *ngIf="addButton">
+        <input type="button" value="Remove From WatchList" id="remove"  (click)="removeFromWishList(title.innerHTML)" *ngIf="removeButton"/> 
     </div>
 </main>
 <app-footer></app-footer>

@@ -14,7 +14,7 @@
         <div class="details-container">
             <div class="details">
                 <h2>Title</h2>
-                <h3>{{ movie.title }}</h3>
+                <h3 #title>{{ movie.title }}</h3>
             </div>
             <div class="details">
                 <h2>Synopsis</h2>
@@ -30,6 +30,10 @@
                 <a href="{{ trailerLink }}" target="_blank">Trailer</a>
             </div>
         </div>
+    </div>
+    <div class="btn-container">
+        <input type="button" value="Add WatchList" id="add" (click)="addToWishList(title.innerHTML)" *ngIf="addButton">
+        <input type="button" value="Remove From WatchList" id="remove"  (click)="removeFromWishList(title.innerHTML)" *ngIf="removeButton"/> 
     </div>
 </main>
 <app-footer></app-footer>

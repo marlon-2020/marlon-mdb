@@ -23,13 +23,21 @@ export class MovieDetailsComponent implements OnInit {
     
     if(localStorage.getItem('wish-list')){
       this.wishList = JSON.parse(localStorage.getItem('wish-list')!)
-      console.log(this.wishList)
     }
 
     this.movieId = this.activatedRoute.snapshot.params['id']
-    this.tmdb.getMovieById(this.movieId).subscribe((data) =>{
+
+
+    this.tmdb.getMovieById(this.movieId).subscribe((data: any) =>{
       this.movie = data
-      console.log(this.posterUrl+this.movie.poster_path, this.movie)
+      
+      if(this.findMovieAdded(data.title) != -1){
+        this.addButton = false
+        this.removeButton = true
+      }else{
+        this.removeButton = false
+        this.addButton = true
+      }
       this.tmdb.getTrailerLink(this.movie.id).subscribe((data:any)=>{
         
         this.trailerLink = 'https://www.youtube.com/watch?v='+data.results[0].key
@@ -38,6 +46,7 @@ export class MovieDetailsComponent implements OnInit {
 
 
   } 
+  
   wishList:any[] = []
 
   addToWishList(movieTitle: string){
@@ -47,11 +56,14 @@ export class MovieDetailsComponent implements OnInit {
         this.wishList.push({
           title: data.results[0].title,
           url: this.posterUrl + data.results[0].poster_path,
-          date: data.results[0].release_date
+          date: data.results[0].release_date,
+          id: data.results[0].id
         })
         localStorage.setItem('wish-list', JSON.stringify(
           this.wishList
         ))
+        this.addButton = false
+        this.removeButton = true
         alert('Added With Success!')
       }else{
         alert('Already Added!')
@@ -59,10 +71,22 @@ export class MovieDetailsComponent implements OnInit {
     })
   }
 
+  addButton: boolean = true
+  removeButton: boolean = true
+
   findMovieAdded(movieTitle: string){
     return this.wishList.findIndex((element)=>{
       return element.title === movieTitle
     })
+  }
+
+  removeFromWishList(movieTitle: string){
+    this.wishList.splice(this.findMovieAdded(movieTitle), 1)
+    localStorage.setItem('wish-list', JSON.stringify(this.wishList))
+    
+    this.removeButton = false
+    this.addButton = true
+    alert('removed with success!')
   }
 
 }
