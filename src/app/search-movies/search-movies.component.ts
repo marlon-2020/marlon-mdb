@@ -32,7 +32,6 @@ export class SearchMoviesComponent implements OnInit {
         this.addButton = true
       }
       this.tmdb.getTrailerLink(this.movie.id).subscribe((data:any)=>{
-        console.log(data.results[0])
         this.trailerLink = 'https://www.youtube.com/watch?v='+data.results[0].key
       })
     })

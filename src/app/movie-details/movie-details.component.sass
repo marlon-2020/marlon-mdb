@@ -56,3 +56,27 @@ main
             background: rgb(0, 150, 50)
         #remove
             background: rgb(150, 0, 50)
+@media only screen and (max-width: 880px)
+    main
+        .container
+            flex-direction: column
+            height: auto
+            padding: 10px 0
+            gap: 10px
+            width: 95%
+            .card
+                height: auto
+                width: 95%
+                display: flex
+                align-items: center
+                justify-content: center
+                img
+            .details-container
+                width: 95%
+@media only screen and (max-width: 450px)
+    main
+        .container
+            .card
+                height: auto
+                img
+                    width: 300px
