@@ -24,4 +24,17 @@ export class WatchListComponent implements OnInit {
     this.router.navigate(['/movie-details',value])
   }
 
+  removeFromWishList(movieTitle: string){
+    this.watchList.splice(this.findMovieAdded(movieTitle), 1)
+    localStorage.setItem('wish-list', JSON.stringify(this.watchList))
+    alert('removed with success!')
+  }
+
+  findMovieAdded(movieTitle: string){
+    return this.watchList.findIndex((element)=>{
+      return element.title === movieTitle
+    })
+  }
+
+
 }
