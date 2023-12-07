@@ -23,22 +23,7 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
   carousel: any;
 
   ngOnInit(): void {
-    let movie = this.renderer.selectRootElement(this.element.nativeElement, true)
-    let imgs = movie.querySelectorAll('img.item')
-    let i = 0
-    // this.carousel = setInterval(() => {
-    //   imgs[i % imgs.length].style.transform = `translate(-${(i + 1) * 350}px)`
-    //   imgs[(i + 1) % imgs.length].style.transform = `translate(-${(i + 1) * 350}px)`
-    //   imgs[(i + 2) % imgs.length].style.transform = `translate(-${(i + 1) * 350}px)`
-    //   i++
-    //   if (i == 3) {
-    //     i = 0
-    //     imgs[i % imgs.length].style.transform = `translate(0px)`
-    //     imgs[(i + 1) % imgs.length].style.transform = `translate(350px)`
-    //     imgs[(i + 2) % imgs.length].style.transform = `translate(700px)`
-    //   }
-    // }, 1000)
-
+    
     this.tmdb.getMoviesList().subscribe(
       (data: any) => {
         this.moviesList = data.results
@@ -64,9 +49,19 @@ goToMoviesDetails(value: string){
   this.router.navigate(['/movie-details',value])
 }
 
-  ngOnDestroy() {
-    if (this.carousel) {
-      clearInterval(this.carousel)
+  i = 0
+  carouselSlide(){
+    let movie = this.renderer.selectRootElement(this.element.nativeElement, true)
+    let imgs = movie.querySelectorAll('img.item')
+    if (this.i > 2) {
+      this.i = 0
     }
+    for(let img of imgs){
+      img.style.transform = `translate(${-this.i*350}px)`
+    }
+    this.i++
+  }
+
+  ngOnDestroy() {
   }
 }

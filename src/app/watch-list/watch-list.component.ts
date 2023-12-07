@@ -15,7 +15,6 @@ export class WatchListComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.getItem('wish-list')){
       this.watchList = JSON.parse(localStorage.getItem('wish-list')!)
-      console.log(this.watchList)
     }
     
   }

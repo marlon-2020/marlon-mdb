@@ -6,22 +6,35 @@ main
     justify-content: center
     align-items: center
     background: rgb(1, 15, 24)
-    img
+    figure
+        background-image: url('/assets/images/welcome.jfif') 
+        background-position: center center
         width: 500px
+        height: 500px
         border-radius: 50%
         box-shadow: 3px 3px 10px white, -3px 3px 10px white, 3px -3px 10px white, -3px -3px 10px white
-    input
-        width: 200px
-        height: 40px
-        position: relative
-        top: -80px
-        left: -12px
-        border: none
-        border-radius: 40px
-        background: rgb(237,215,191)
-        box-shadow: 3px 3px 10px white, -3px 3px 10px white, 3px -3px 10px white, -3px -3px 10px white
-        cursor: pointer
-        font-size: 1.5rem
-        color: black
-        &:hover
-            box-shadow: 3px 3px 10px rgb(150, 0, 100), -3px 3px 10px rgb(150, 0, 100), 3px -3px 10px rgb(150, 0, 100), -3px -3px 10px rgb(150, 0, 100)
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        align-items: center
+        padding: 0 0 40px 0
+        input
+            width: 200px
+            height: 40px
+            position: relative
+            border: none
+            border-radius: 40px
+            background: rgb(237,215,191)
+            box-shadow: 3px 3px 10px white, -3px 3px 10px white, 3px -3px 10px white, -3px -3px 10px white
+            cursor: pointer
+            font-size: 1.5rem
+            color: black
+            &:hover
+                box-shadow: 3px 3px 10px rgb(150, 0, 100), -3px 3px 10px rgb(150, 0, 100), 3px -3px 10px rgb(150, 0, 100), -3px -3px 10px rgb(150, 0, 100)
+
+@media only screen and (max-width: 520px)
+    main
+        figure
+            width: 100%
+            height: 100vh
+            border-radius: 0
