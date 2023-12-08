@@ -5,8 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class GenreFilterPipe implements PipeTransform {
 
-  transform(value: string):string {
-    return value.replace(value, value+' ');
+  transform(values: any[]): string {
+    let arr = []
+    for(let value of values){
+      arr.push(value.name)
+    }
+    return arr.join(' - ');
   }
-
 }

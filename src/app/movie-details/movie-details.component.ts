@@ -30,6 +30,7 @@ export class MovieDetailsComponent implements OnInit {
 
     this.tmdb.getMovieById(this.movieId).subscribe((data: any) =>{
       this.movie = data
+      //console.log(this.movie.genres)
       
       if(this.findMovieAdded(data.title) != -1){
         this.addButton = false

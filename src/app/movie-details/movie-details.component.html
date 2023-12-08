@@ -18,7 +18,8 @@
             </div>
             <div class="details">
                 <h2>Genres</h2>
-                <p><span *ngFor="let genre of movie.genres">{{ genre.name | genreFilter }}</span></p>
+                <p><span>{{ movie.genres
+                 | genreFilter }}</span></p>
             </div>
             <div class="details">
                 <h2>Released Date</h2>
