@@ -4,12 +4,14 @@
         <h1>Welcome to Marlon-MDB</h1>
     </section>
     <section class="carousel">
-        <div class="carousel-container" (click)="carouselSlide()">
-            <img src="./assets/images/welcome.jfif" alt="" class="item">
-            <img src="./assets/images/welcome.jfif" alt="" class="item">
-            <img src="./assets/images/welcome.jfif" alt="" class="item">
+        <div class="carousel-container">
+            <img src="{{ 'https://image.tmdb.org/t/p/original' + carousel.backdrop_path}}" alt="" id="{{carousel.id}}" class="item" *ngFor="let carousel of carouselList" (click)="goToMoviesDetails(carousel.id)">
+        </div>
+        <div class="btn-carousel">
+            <input type="button" value="change" (click)="carouselSlide()" id="title">
         </div>
     </section>
+    <p>Sort movie:</p>
     <div class="btn-container">
         <input type="button" value="By Title" id="title" #title (click)="setSort(title.id)">
         <input type="button" value="Default" id="default" #default (click)="setSort(default.id)">

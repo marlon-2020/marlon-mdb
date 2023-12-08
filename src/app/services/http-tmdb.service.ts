@@ -32,4 +32,8 @@ export class HttpTmdbService {
     return this.http.get(`https://api.themoviedb.org/3/movie/${value}/videos`, this.options)
   }
   
+  getMovieListByPopularity(){
+    return this.http.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=2`, this.options)
+  }
+
 }

@@ -19,7 +19,7 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
 
   moviesList: any[] = []
   copyMoviesList: any[] = []
-
+  carouselList: any[] = []  
   carousel: any;
 
   ngOnInit(): void {
@@ -29,7 +29,11 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
         this.moviesList = data.results
       }
     )
-
+    this.tmdb.getMovieListByPopularity().subscribe((data: any)=>{
+      this.carouselList.push(data.results[0])
+      this.carouselList.push(data.results[1])
+      this.carouselList.push(data.results[2])
+    }) 
   }
 
   setSort(id: string){
@@ -37,7 +41,6 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
       this.moviesList = this.organize.sortByTitle(this.moviesList)
     }else if(id == 'date'){
       this.moviesList = this.organize.sortByDate(this.moviesList)
-      console.log(this.moviesList)
     }else if(id == 'default'){
       this.tmdb.getMoviesList().subscribe((data: any)=>{
         this.moviesList = data.results
@@ -45,21 +48,24 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
     }
   }
 
-goToMoviesDetails(value: string){
-  this.router.navigate(['/movie-details',value])
-}
+  goToMoviesDetails(value: string){
+    this.router.navigate(['/movie-details',value])
+  }
 
-  i = 0
+  
+  guardTranslate=0
+  i = 1
   carouselSlide(){
     let movie = this.renderer.selectRootElement(this.element.nativeElement, true)
     let imgs = movie.querySelectorAll('img.item')
-    if (this.i > 2) {
-      this.i = 0
-    }
-    for(let img of imgs){
-      img.style.transform = `translate(${-this.i*350}px)`
-    }
+    imgs[this.i%imgs.length].style.width = '350px'
+    imgs[(this.i+1)%imgs.length].style.width = '0px'
+    imgs[(this.i+2)%imgs.length].style.width = '0px'
     this.i++
+    if(this.i == 3){
+      this.i=0
+    }
+
   }
 
   ngOnDestroy() {

@@ -11,12 +11,12 @@ export class WatchListComponent implements OnInit {
   constructor(private router: Router){}
 
   watchList: any[]=[]
- 
+  
   ngOnInit(): void {
     if(localStorage.getItem('wish-list')){
       this.watchList = JSON.parse(localStorage.getItem('wish-list')!)
     }
-    
+    console.log(this.watchList.length)
   }
 
   goToMoviesDetails(value: string){

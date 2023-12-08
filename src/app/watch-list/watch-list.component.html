@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
     <section class="movies">
-        <div class="card-container">
+        <div class="card-container" *ngIf="watchList.length>0">
             <div class="card" *ngFor="let movie of watchList">
                 <div class="card-movie" id="{{ movie.id }}" (click)="goToMoviesDetails(movie.id)">
                     <img src="{{ movie.url }}" alt="">
@@ -11,6 +11,11 @@
                 <div class="btn-container">
                     <input type="button" value="Remove From Watchlist" class="btn-remove" (click)="removeFromWishList(title.innerHTML)">
                 </div>
+            </div>
+        </div>
+        <div class="card-container" *ngIf="watchList.length<=0">
+            <div class="card">
+                <p class="aviso">No Movies in Watchlist</p>
             </div>
         </div>
     </section>
