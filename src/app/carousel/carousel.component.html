@@ -1,0 +1,11 @@
+<div class="carousel-container">
+    <div class="carousel">
+        <img src="{{ 'https://image.tmdb.org/t/p/original' + carousel.backdrop_path}}" alt="" id="{{carousel.id}}" class="item" *ngFor="let carousel of carouselList">
+    </div>
+    <div class="btn-container">
+        <input type="button" value="<" (click)="left()">
+        <div class="touch-container" (click)="goToMoviesDetails()"></div>
+        <input type="button" value=">" (click)="right()">
+    </div>
+</div>
+

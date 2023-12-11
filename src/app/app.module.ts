@@ -14,6 +14,10 @@ import { CloseMenuSlideDirective } from './directives/close-menu-slide.directive
 import { CarouselDirective } from './directives/carousel.directive';
 import { GenreFilterPipe } from './pipes/genre-filter.pipe';
 import { WatchListComponent } from './watch-list/watch-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CarouselComponent } from './carousel/carousel.component';
+
+
 
 @NgModule({
   declarations: [
@@ -29,11 +33,13 @@ import { WatchListComponent } from './watch-list/watch-list.component';
     CarouselDirective,
     GenreFilterPipe,
     WatchListComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule    
   ],
   providers: [
     provideClientHydration()

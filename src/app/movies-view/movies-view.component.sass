@@ -23,20 +23,8 @@ main
             &:hover
                 cursor: pointer
     .carousel
-        margin: auto
-        width: 350px
-        height: auto
-        overflow: hidden
-        .carousel-container
-            width: 350px
-            display: flex
-            height: 200px
-            img.item
-                border-radius: 10px
-                height: auto
-                transition: width 1s
-                width: 350px
-                cursor: pointer
+        display: flex
+        justify-content: center
         .btn-carousel
             display: flex
             justify-content: center
@@ -94,6 +82,13 @@ main
                 box-shadow: 3px 3px 3px white, -3px 3px 3px white, 3px -3px 3px white, -3px -3px 3px white
                 transform: translateY(-10px)
                 cursor: pointer
+    .pagination-container
+        display: flex
+        justify-content: center
+        .my-pagination ::ng-deep .ngx-pagination .current 
+            background: red  
+  
+
 @media screen and (max-width: 1120px)
     main
         .card-container

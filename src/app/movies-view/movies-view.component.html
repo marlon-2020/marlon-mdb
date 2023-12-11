@@ -4,12 +4,13 @@
         <h1>Welcome to Marlon-MDB</h1>
     </section>
     <section class="carousel">
-        <div class="carousel-container">
+        <app-carousel></app-carousel>
+        <!-- <div class="carousel-container">
             <img src="{{ 'https://image.tmdb.org/t/p/original' + carousel.backdrop_path}}" alt="" id="{{carousel.id}}" class="item" *ngFor="let carousel of carouselList" (click)="goToMoviesDetails(carousel.id)">
         </div>
         <div class="btn-carousel">
             <input type="button" value="change" (click)="carouselSlide()" id="title">
-        </div>
+        </div> -->
     </section>
     <p>Sort movie:</p>
     <div class="btn-container">
@@ -19,12 +20,15 @@
     </div>
     <section class="movies">
         <div class="card-container">
-            <div class="card"  *ngFor="let movie of moviesList" id="{{ movie.id }}" #id (click)="goToMoviesDetails(id.id)">
+            <div class="card"  *ngFor="let movie of moviesList | paginate: { itemsPerPage: 8, currentPage: p }" id="{{ movie.id }}" #id (click)="goToMoviesDetails(id.id)">
                 <img src="{{ 'https://image.tmdb.org/t/p/original' + movie.backdrop_path }}" alt="poster">
                 <h1>{{ movie.title }}</h1>
                 <p>{{ movie.release_date | date }}</p>
             </div>
         </div>
+    </section>
+    <section class="pagination-container">
+        <pagination-controls (pageChange)="p = $event" class="my-pagination"></pagination-controls>
     </section>
 </main>
 <app-footer></app-footer>

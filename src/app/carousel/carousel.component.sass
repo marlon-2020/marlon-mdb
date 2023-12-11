@@ -1,0 +1,56 @@
+.carousel-container
+    display: flex
+    overflow: hidden
+    width: 700px
+    flex-direction: column
+    position: relative
+    .carousel
+        display: grid
+        grid-template-columns: 700px 700px 700px 700px 700px
+        justify-content: start
+        transition: transform 1s
+        img
+            width: 700px
+            &:hover
+    .btn-container
+        cursor: pointer
+        width: 100%
+        height: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        position: absolute
+        input
+            padding: 0
+            text-align: center
+            color: rgb(1, 15, 21)
+            height: 100px
+            width: 30px
+            border: none
+            opacity: 0.7
+            font-size: 3rem
+            cursor: pointer
+            position: relative
+            z-index: 20
+        .touch-container
+            position: absolute
+            width: 100%
+            height: 100%
+            z-index: 10
+
+@media only screen and (max-width: 700px)
+    .carousel-container
+        width: 400px
+        .carousel
+            width: 400px
+            grid-template-columns: 400px 400px 400px 400px 400px
+            img
+                width: 400px
+@media only screen and (max-width: 400px)
+    .carousel-container
+        width: 300px
+        .carousel
+            width: 300px
+            grid-template-columns: 300px 300px 300px 300px 300px
+            img
+                width: 300px

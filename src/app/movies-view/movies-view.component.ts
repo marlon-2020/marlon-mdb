@@ -16,7 +16,7 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
     private organize: SortsService,
     private router: Router
   ) { }
-
+  p = 1
   moviesList: any[] = []
   copyMoviesList: any[] = []
   carouselList: any[] = []  
