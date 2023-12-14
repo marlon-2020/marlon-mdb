@@ -11,7 +11,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuSlideDirective } from './directives/open-menu-slide.directive';
 import { CloseMenuSlideDirective } from './directives/close-menu-slide.directive';
-import { CarouselDirective } from './directives/carousel.directive';
 import { GenreFilterPipe } from './pipes/genre-filter.pipe';
 import { WatchListComponent } from './watch-list/watch-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -30,7 +29,6 @@ import { CarouselComponent } from './carousel/carousel.component';
     FooterComponent,
     MenuSlideDirective,
     CloseMenuSlideDirective,
-    CarouselDirective,
     GenreFilterPipe,
     WatchListComponent,
     CarouselComponent,

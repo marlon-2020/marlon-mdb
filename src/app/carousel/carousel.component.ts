@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { HttpTmdbService } from '../services/http-tmdb.service';
 import { Router } from '@angular/router';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'app-carousel',
@@ -12,7 +13,7 @@ export class CarouselComponent implements OnInit {
     private elementRef: ElementRef, 
     private renderer: Renderer2,
     private tmdb: HttpTmdbService,
-    private router: Router
+    private router: Router,
     ) { }
 
   translateAmount = 0
@@ -69,7 +70,6 @@ export class CarouselComponent implements OnInit {
     let container = this.renderer.selectRootElement(this.elementRef.nativeElement, true);
     let carousel = container.querySelector('.carousel')
     let imgs = carousel.querySelectorAll('img')
-    console.log(this.counter)
     this.router.navigate(['/movie-details', imgs[this.counter].id])
   }
 

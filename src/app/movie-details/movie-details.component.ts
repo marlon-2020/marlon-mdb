@@ -1,6 +1,7 @@
 import { HttpTmdbService } from './../services/http-tmdb.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,10 +14,12 @@ export class MovieDetailsComponent implements OnInit {
   movie: any='';
   posterUrl: string = 'https://image.tmdb.org/t/p/original'
   trailerLink=''
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private tmdb: HttpTmdbService,
+    private popup: PopupService
     ){}
 
   ngOnInit(){
@@ -29,9 +32,7 @@ export class MovieDetailsComponent implements OnInit {
 
 
     this.tmdb.getMovieById(this.movieId).subscribe((data: any) =>{
-      this.movie = data
-      //console.log(this.movie.genres)
-      
+      this.movie = data      
       if(this.findMovieAdded(data.title) != -1){
         this.addButton = false
         this.removeButton = true
@@ -47,7 +48,10 @@ export class MovieDetailsComponent implements OnInit {
 
 
   } 
-  
+  hiddenStatus = "none"
+  invert(){
+    this.hiddenStatus = 'none'
+  }
   wishList:any[] = []
 
   addToWishList(movieTitle: string){
@@ -65,16 +69,15 @@ export class MovieDetailsComponent implements OnInit {
         ))
         this.addButton = false
         this.removeButton = true
-        alert('Added With Success!')
-      }else{
-        alert('Already Added!')
+        this.show = 'add'
+        this.hiddenStatus = this.popup.changePopup(this.hiddenStatus)
       }
     })
   }
 
   addButton: boolean = true
   removeButton: boolean = true
-
+  show = 'add'
   findMovieAdded(movieTitle: string){
     return this.wishList.findIndex((element)=>{
       return element.title === movieTitle
@@ -84,10 +87,10 @@ export class MovieDetailsComponent implements OnInit {
   removeFromWishList(movieTitle: string){
     this.wishList.splice(this.findMovieAdded(movieTitle), 1)
     localStorage.setItem('wish-list', JSON.stringify(this.wishList))
-    
+    this.show = 'remove'
     this.removeButton = false
     this.addButton = true
-    alert('removed with success!')
+    this.hiddenStatus = this.popup.changePopup(this.hiddenStatus)
   }
 
 }

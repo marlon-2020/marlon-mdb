@@ -1,3 +1,4 @@
+import { PopupService } from '../services/popup.service';
 import { HttpTmdbService } from './../services/http-tmdb.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchMoviesComponent implements OnInit {
 
-  constructor(private tmdb: HttpTmdbService){}
+  constructor(
+    private tmdb: HttpTmdbService,
+    private popup: PopupService
+    ){}
 
   ngOnInit(): void {
     if(localStorage.getItem('wish-list')){
@@ -36,6 +40,11 @@ export class SearchMoviesComponent implements OnInit {
       })
     })
   }
+  show = 'add'
+  hiddenStatus = "none"
+  invert(){
+    this.hiddenStatus = 'none'
+  }
 
   wishList:any[] = []
 
@@ -53,11 +62,10 @@ export class SearchMoviesComponent implements OnInit {
         localStorage.setItem('wish-list', JSON.stringify(
           this.wishList
         ))
+        this.show = 'add'
         this.addButton = false
         this.removeButton = true
-        alert('Added With Success!')
-      }else{
-        alert('Already Added!')
+        this.hiddenStatus = this.popup.changePopup(this.hiddenStatus)
       }
     })
   }
@@ -74,10 +82,10 @@ export class SearchMoviesComponent implements OnInit {
   removeFromWishList(movieTitle: string){
     this.wishList.splice(this.findMovieAdded(movieTitle), 1)
     localStorage.setItem('wish-list', JSON.stringify(this.wishList))
-    
     this.removeButton = false
     this.addButton = true
-    alert('removed with success!')
+    this.show = 'remove'
+    this.hiddenStatus = this.popup.changePopup(this.hiddenStatus)
   }
 
 }

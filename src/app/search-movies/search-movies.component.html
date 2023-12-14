@@ -35,5 +35,10 @@
         <input type="button" value="Add WatchList" id="add" (click)="addToWishList(title.innerHTML)" *ngIf="addButton">
         <input type="button" value="Remove From WatchList" id="remove"  (click)="removeFromWishList(title.innerHTML)" *ngIf="removeButton"/> 
     </div>
+    <div id="popup" [style.display]="hiddenStatus">
+        <p *ngIf="show == 'add'">Movie Added Sucessfully</p>
+        <p *ngIf="show == 'remove'">Removed Sucessfully</p>
+        <button appPopup id="close" (click)="invert()">Ok</button>
+    </div>
 </main>
 <app-footer></app-footer>

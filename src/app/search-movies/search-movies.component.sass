@@ -73,6 +73,33 @@ main
         #remove
             background: rgb(150, 0, 50)
 
+#popup
+    display: flex
+    width: 400px
+    height: 300px
+    position: fixed
+    top: 35dvh
+    z-index: 10
+    background: #eccfb1
+    box-shadow: 3px 3px 10px black
+    border-radius: 10px
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    p
+        font-size: 2rem
+        color: black
+    #close
+        width: 200px
+        height: 50px
+        background: rgb(0, 150, 50)
+        border-radius: 15px
+        border: none
+        font-size: 2rem
+        position: relative
+        top: 50px
+        cursor: pointer
+
 @media only screen and (max-width: 880px)
     main
         .container
@@ -97,3 +124,18 @@ main
                 height: auto
                 img
                     width: 300px
+    #popup
+        width: 250px
+        height: 200px
+        p
+            font-size: 1.5rem
+        #close
+            width: 100px
+            height: 40px
+            background: rgb(0, 150, 50)
+            border-radius: 15px
+            border: none
+            font-size: 1.5rem
+            position: relative
+            top: 20px
+            cursor: pointer
